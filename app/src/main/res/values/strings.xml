@@ -2,4 +2,6 @@
     <string name="app_name">Notepad</string>
     <string name="button_ok">OK</string>
     <string name="text_message">Welcome To Sonal/Chuchu Notepad</string>
+    <string name="new_note">Create a new note</string>
+    <string name="open_saved_note">Open an existing note</string>
 </resources>
