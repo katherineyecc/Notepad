@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Notepad</string>
+    <string name="button_ok">OK</string>
+    <string name="text_message">Welcome To Sonal/Chuchu Notepad</string>
+</resources>
