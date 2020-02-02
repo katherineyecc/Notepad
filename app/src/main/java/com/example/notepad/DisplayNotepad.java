@@ -43,7 +43,7 @@ public class DisplayNotepad extends AppCompatActivity {
     }
 
     public void createNewNote() {
-        Intent intent = new Intent(this, createNote.class);
+        Intent intent = new Intent(this, EditNoteActivity.class);
         startActivity(intent);
     }
 

@@ -5,10 +5,10 @@ public class Note {
     private int _id;
     private String title;
     private String content;
-    private boolean has_bold;
-    private boolean has_underlined;
-    private boolean has_italics;
-    private boolean has_text_color;
+    private boolean has_bold = false;
+    private boolean has_underlined = false;
+    private boolean has_italics = false;
+    private boolean has_text_color = false;
     private String bold_position;
     private String underlined_position;
     private String italics_position;
