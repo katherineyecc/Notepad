@@ -2,10 +2,13 @@ package com.example.notepad;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,6 +19,8 @@ public class openNote extends AppCompatActivity implements AdapterView.OnItemCli
     private noteItemAdapter mAdapter = null;
     private ListView list_note;
 
+    public static final String NOTE_ID = "com.example.notepad.openNote.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +28,11 @@ public class openNote extends AppCompatActivity implements AdapterView.OnItemCli
         mContext = openNote.this;
         list_note = (ListView) findViewById(R.id.list_note);
         mData = new LinkedList<noteItem>();
-        // Get id and title from database
-        // and reform them into noteItem
-        // Add all saved item into mData, using
-        // mData.add(int i, noteItem e);
+
+        // Get note item list from database;
+        myDBHandler dbHandler = new myDBHandler(this, null, null,1);
+        mData = dbHandler.getAllNoteItem();
+
         mAdapter = new noteItemAdapter((LinkedList<noteItem>) mData, mContext);
         list_note.setAdapter(mAdapter);
         list_note.setOnItemClickListener(this);
@@ -37,5 +43,10 @@ public class openNote extends AppCompatActivity implements AdapterView.OnItemCli
         // Set the action when click on the item
         // The action is entering a new note activity
         // ...
+        TextView tv = (TextView) view.findViewById(R.id.note_id);
+        String clickedID = tv.getText().toString();
+        Intent intent = new Intent(this, EditNoteActivity.class);
+        intent.putExtra(NOTE_ID, clickedID);
+        startActivity(intent);
     }
 }

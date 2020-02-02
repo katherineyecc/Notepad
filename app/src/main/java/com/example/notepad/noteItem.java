@@ -18,7 +18,7 @@ public class noteItem {
         return _id;
     }
 
-    public void setID9(int id) {
+    public void setID(int id) {
         this._id = id;
     }
 

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.LinkedList;
+
 public class myDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -91,7 +93,7 @@ public class myDBHandler extends SQLiteOpenHelper {
     public Note findNote(int noteID) {
         String ID = Integer.toString(noteID);
         String query = "select * from " + TABLE_NOTEPAD +
-                "where " + COLUMN_ID + " = " + ID;
+                " where " + COLUMN_ID + " = " + ID;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Note note = new Note();
@@ -114,5 +116,24 @@ public class myDBHandler extends SQLiteOpenHelper {
         }
         db.close();
         return note;
+    }
+
+    public LinkedList<noteItem> getAllNoteItem() {
+        String query = "select " + COLUMN_ID + " and " + COLUMN_TITLE +
+                " from " + TABLE_NOTEPAD;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        LinkedList<noteItem> items = new LinkedList<>();
+        noteItem item = new noteItem();
+        int row = 0;
+        while(row < cursor.getCount()) {
+            item.setID(Integer.parseInt(cursor.getString(0)));
+            item.setTitle(cursor.getString(1));
+            row++;
+            items.add(item);
+        }
+        cursor.close();
+        db.close();
+        return items;
     }
 }

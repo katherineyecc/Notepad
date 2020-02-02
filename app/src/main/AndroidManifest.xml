@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".openNote"
-            android:parentActivityName=".DisplayNotepad">
-        </activity>
-        <activity android:name=".createNote"
-            android:parentActivityName=".DisplayNotepad">
-        </activity>
+        <activity android:name=".EditNoteActivity"></activity>
+        <activity
+            android:name=".openNote"
+            android:parentActivityName=".DisplayNotepad"></activity>
+        <activity
+            android:name=".createNote"
+            android:parentActivityName=".DisplayNotepad"></activity>
         <activity android:name=".DisplayNotepad" />
         <activity android:name=".MainActivity">
             <intent-filter>
