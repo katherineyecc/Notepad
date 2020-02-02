@@ -4,4 +4,5 @@
     <string name="text_message">Welcome To Sonal/Chuchu Notepad</string>
     <string name="new_note">Open a new note</string>
     <string name="open_saved_note">Open an existing note</string>
+    <string name="note_list">Note List</string>
 </resources>

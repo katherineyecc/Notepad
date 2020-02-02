@@ -14,6 +14,7 @@ public class myDBHandler extends SQLiteOpenHelper {
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_CONTENT = "content";
+    public static final String COLUMN_TITLE = "title";
     public static final String COLUMN_HASBOLD = "has_bold";
     public static final String COLUMN_HASUNDERLINED = "has_underlined";
     public static final String COLUMN_HASITALICS = "has_italics";
@@ -31,6 +32,7 @@ public class myDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "create table " + TABLE_NOTEPAD +
                 "(" + COLUMN_ID + "integer primary key," +
+                COLUMN_TITLE + "text," +
                 COLUMN_CONTENT + "text," + COLUMN_HASBOLD + "boolean," +
                 COLUMN_HASUNDERLINED + "boolean," +
                 COLUMN_HASITALICS + "boolean," +
@@ -50,6 +52,7 @@ public class myDBHandler extends SQLiteOpenHelper {
 
     public void addNote(Note note) {
         ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, note.getTitle());
         values.put(COLUMN_CONTENT, note.getContent());
         values.put(COLUMN_HASBOLD, note.getHasBold());
         values.put(COLUMN_HASUNDERLINED, note.getHasUnderlined());
@@ -83,5 +86,33 @@ public class myDBHandler extends SQLiteOpenHelper {
         }
         db.close();
         return result;
+    }
+
+    public Note findNote(int noteID) {
+        String ID = Integer.toString(noteID);
+        String query = "select * from " + TABLE_NOTEPAD +
+                "where " + COLUMN_ID + " = " + ID;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        Note note = new Note();
+        if(cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            note.setID(Integer.parseInt(cursor.getString(0)));
+            note.setTitle(cursor.getString(1));
+            note.setContent(cursor.getString(2));
+            note.setHasBold(Boolean.getBoolean(cursor.getString(3)));
+            note.setHasUnderlined((Boolean.getBoolean(cursor.getString(4))));
+            note.setHasitalics(Boolean.getBoolean(cursor.getString(5)));
+            note.setHasTextColor(Boolean.getBoolean(cursor.getString(6)));
+            note.setBoldPosition(cursor.getString(7));
+            note.setUnderlinedPosition(cursor.getString(8));
+            note.setItalicsPosition(cursor.getString(9));
+            note.setTextColorPosition(cursor.getString(10));
+            cursor.close();
+        } else {
+            note = null;
+        }
+        db.close();
+        return note;
     }
 }

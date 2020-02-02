@@ -3,6 +3,7 @@ package com.example.notepad;
 public class Note {
 
     private int _id;
+    private String title;
     private String content;
     private boolean has_bold;
     private boolean has_underlined;
@@ -25,6 +26,14 @@ public class Note {
 
     public int getID() {
         return _id;
+    }
+
+    public void setTitle(String s) {
+        title = s;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setContent(String c) {
@@ -51,7 +60,7 @@ public class Note {
         return has_underlined;
     }
 
-    public void setHas_italics(boolean b) {
+    public void setHasitalics(boolean b) {
         has_italics = b;
     }
 
