@@ -1,8 +1,5 @@
 package com.example.notepad;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Note {
 
     private int _id;
@@ -15,6 +12,8 @@ public class Note {
     private String underlined_position;
     private String italics_position;
     private String color_position;
+
+    public Note() {}
 
     public Note(int id) {
         this._id = id;
