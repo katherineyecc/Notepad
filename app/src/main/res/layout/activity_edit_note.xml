@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/edit_note_title"
-        android:layout_width="265dp"
-        android:layout_height="32dp"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/display_title"
@@ -52,10 +52,10 @@
 
     <EditText
         android:id="@+id/edit_note_content"
-        android:layout_width="352dp"
-        android:layout_height="46dp"
+        android:layout_width="320dp"
+        android:layout_height="385dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="348dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:textScaleX="1.5"
         app:layout_constraintEnd_toEndOf="parent"
