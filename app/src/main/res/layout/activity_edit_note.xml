@@ -58,7 +58,6 @@
         android:layout_marginTop="348dp"
         android:layout_marginEnd="24dp"
         android:textScaleX="1.5"
-        android:textScaleY="1.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_note_title" />

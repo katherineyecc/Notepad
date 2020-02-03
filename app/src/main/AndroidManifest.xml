@@ -13,7 +13,6 @@
         <activity
             android:name=".openNote"
             android:parentActivityName=".DisplayNotepad" />
-        <activity android:name=".DisplayNotepad" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

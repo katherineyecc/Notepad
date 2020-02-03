@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void enterNotepad(View view) {
-        Intent intent = new Intent(this, DisplayNotepad.class);
+        Intent intent = new Intent(this, openNote.class);
         startActivity(intent);
     }
 }

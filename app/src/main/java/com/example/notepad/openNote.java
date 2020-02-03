@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -47,6 +50,33 @@ public class openNote extends AppCompatActivity implements AdapterView.OnItemCli
         String clickedID = tv.getText().toString();
         Intent intent = new Intent(this, EditNoteActivity.class);
         intent.putExtra(NOTE_ID, clickedID);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu, this adds items to the action bar if it is present.
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.user_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        switch (item.getItemId()) {
+            case R.id.new_note:
+                createNewNote();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void createNewNote() {
+        Intent intent = new Intent(this, EditNoteActivity.class);
         startActivity(intent);
     }
 }

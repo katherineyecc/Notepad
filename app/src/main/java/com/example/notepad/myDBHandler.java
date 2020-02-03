@@ -32,18 +32,20 @@ public class myDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        System.out.println("Enter the onCreate function!");
         String CREATE_TABLE = "create table " + TABLE_NOTEPAD +
-                "(" + COLUMN_ID + "integer primary key," +
-                COLUMN_TITLE + "text," +
-                COLUMN_CONTENT + "text," + COLUMN_HASBOLD + "boolean," +
-                COLUMN_HASUNDERLINED + "boolean," +
-                COLUMN_HASITALICS + "boolean," +
-                COLUMN_HASTEXTCOLOR + "boolean" +
-                COLUMN_BOLDPOSITION + "text," +
-                COLUMN_UNDERLINEDPOSITION + "text," +
-                COLUMN_ITALICSPOSITION + "text," +
-                COLUMN_COLORPOSITION + "text" + ")";
+                "(" + COLUMN_ID + " integer primary key," +
+                COLUMN_TITLE + " text," +
+                COLUMN_CONTENT + " text," + COLUMN_HASBOLD + " boolean," +
+                COLUMN_HASUNDERLINED + " boolean," +
+                COLUMN_HASITALICS + " boolean," +
+                COLUMN_HASTEXTCOLOR + " boolean," +
+                COLUMN_BOLDPOSITION + " text," +
+                COLUMN_UNDERLINEDPOSITION + " text," +
+                COLUMN_ITALICSPOSITION + " text," +
+                COLUMN_COLORPOSITION + " text" + ");";
         db.execSQL(CREATE_TABLE);
+        System.out.println("Table is created!");
     }
 
     @Override
@@ -75,7 +77,7 @@ public class myDBHandler extends SQLiteOpenHelper {
         String ID = Integer.toString(noteID);
 
         String query = "select * from " + TABLE_NOTEPAD +
-                "where " + COLUMN_ID + " = " + ID;
+                " where " + COLUMN_ID + " = " + ID;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Note note = new Note();
@@ -119,9 +121,10 @@ public class myDBHandler extends SQLiteOpenHelper {
     }
 
     public LinkedList<noteItem> getAllNoteItem() {
-        String query = "select " + COLUMN_ID + " and " + COLUMN_TITLE +
+        String query = "select " + COLUMN_ID + " , " + COLUMN_TITLE +
                 " from " + TABLE_NOTEPAD;
         SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println("DATABASE PATH: " + db.getPath());
         Cursor cursor = db.rawQuery(query, null);
         LinkedList<noteItem> items = new LinkedList<>();
         noteItem item = new noteItem();
